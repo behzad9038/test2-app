@@ -1,3 +1,10 @@
-<ul class="list-group" >
-  <li class="list-group-item" *ngFor="let item of Students">{{item.Name}}</li>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let item of Students | async">{{item.Name}}
+    <button class="btn btn-xs btn-success" (click)="getStudent(item.ID)">load</button>
+  </li>
+</ul>
+<ul *ngIf="Student | async as ST">
+  <li>{{ST.ID}}</li>
+  <li>{{ST.Name}}</li>
+  <li>{{ST.Age}}</li>
 </ul>
