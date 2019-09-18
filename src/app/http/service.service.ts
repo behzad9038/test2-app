@@ -17,7 +17,19 @@ export class ServiceService {
   GetStudentByID(ID) {
     let getUrl = 'Student/GetStudent'
     const params = new HttpParams().set('ID', ID);
-    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post(myGlobals.baseURL + getUrl, params, { headers: reqHeader });
+  }
+  ModifyStudent(Name, Age) {
+    let getUrl = 'Student/ModifyStudent'
+    const params = new HttpParams().set('Name', Name).set('Age', Age);
+    var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
+    return this.http.post(myGlobals.baseURL + getUrl, params, { headers: reqHeader });
+  }
+  DeleteStudent(ID)
+  {
+    let getUrl = 'Student/DeleteStudent'
+    const params = new HttpParams().set('ID', ID);
     var reqHeader = new HttpHeaders({ 'No-Auth': 'True' });
     return this.http.post(myGlobals.baseURL + getUrl, params, { headers: reqHeader });
   }

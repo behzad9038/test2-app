@@ -1,6 +1,17 @@
+<div class="row">
+  <div class="form-group">
+    <label for="studentName">studentName</label>
+    <input type="text" id="studentName" #studentName name="studentName" class="form-control" required>
+  </div>
+  <div class="form-group">
+    <label for="Age">Age</label>
+    <input type="text" id="Age" #Age name="Age" class="form-control" required (keydown.enter)="ModifyStudent(studentName,Age)">
+  </div>
+</div>
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let item of Students | async">{{item.Name}}
     <button class="btn btn-xs btn-success" (click)="getStudent(item.ID)">load</button>
+    <button class="btn btn-xs btn-danger" (click)="deleteStudent(item.ID)">X</button>
   </li>
 </ul>
 <ul *ngIf="Student | async as ST">
@@ -8,3 +19,4 @@
   <li>{{ST.Name}}</li>
   <li>{{ST.Age}}</li>
 </ul>
+
