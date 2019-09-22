@@ -1,0 +1,64 @@
+<mat-checkbox class="example-margin" [(ngModel)]="checked">Checked</mat-checkbox> {{checked}}
+<button mat-raised-button>Basic</button>
+<button mat-button>Basic</button>
+
+
+<div class="row">
+  <div class="col-md-3">
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="1">Option 1</mat-radio-button>
+      <mat-radio-button value="2">Option 2</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field>
+      <mat-select placeholder="Favorite food">
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{ food.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Favorite food" value="Sushi">
+    </mat-form-field>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Leave a comment"></textarea>
+    </mat-form-field>
+  </div>
+</div>
+
+<mat-form-field class="example-full-width">
+  <input matInput placeholder="User Name" name="userName" [(ngModel)]="userName" #userName1="ngModel" required>
+  <mat-hint>unique username</mat-hint>
+  <span matPrefix>admin.</span>
+  <span matSuffix>@domain.com</span>
+  <mat-error *ngIf="userName1.invalid && userName1.touched">This feild is required</mat-error>
+</mat-form-field>
+<div class="row">
+  <div class="col-md-6">
+
+    <mat-form-field>
+      <input (focus)="picker.open()" matInput [matDatepicker]="picker" placeholder="Choose a date" [min]="minDate"
+        [max]="maxDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker touchUi="true"></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <div class="col-md-6">
+    <i class="material-icons">add_alert</i>
+    <i class="material-icons md-dark md-inactive">face</i>
+    <mat-icon>face</mat-icon>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <mat-chip-list [multiple]="true">
+      <mat-chip *ngFor="let food of foods" (click)="food.selected=!food.selected" [selected]="food.selected">{{food.viewValue}} -- {{food.selected}}</mat-chip>
+    </mat-chip-list>
+  </div>
+
+</div>
