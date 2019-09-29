@@ -57,8 +57,34 @@
 <div class="row">
   <div class="col-md-6">
     <mat-chip-list [multiple]="true">
-      <mat-chip *ngFor="let food of foods" (click)="food.selected=!food.selected" [selected]="food.selected">{{food.viewValue}} -- {{food.selected}}</mat-chip>
+      <mat-chip *ngFor="let food of foods" (click)="food.selected=!food.selected" [selected]="food.selected">
+        {{food.viewValue}} -- {{food.selected}}</mat-chip>
     </mat-chip-list>
   </div>
-
+  <div class="col-md-6">
+    <mat-progress-spinner mode="determinate" value="90"></mat-progress-spinner>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <span matTooltip="Info about the action" matTooltipPosition="right">Tooltip</span>
+  </div>
+  <div class="col-md-6">
+    <mat-tab-group>
+      <mat-tab label="First"> Content 1 </mat-tab>
+      <mat-tab label="Second"> Content 2 </mat-tab>
+      <mat-tab label="Third"> Content 3 </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <button mat-raised-button (click)="openDialog()">Open Dialog!</button>
+  </div>
+  <div class="col-md-6">
+    <button mat-raised-button color="primary">Button1 </button>
+    <button mat-raised-button color="accent"> Button2</button>
+    <h1 class="mat-display-1">Jackdaws love my big sphinx of quartz.</h1>
+    <h2 class="mat-h2">The quick brown fox jumps over the lazy dog.</h2>
+  </div>
 </div>
