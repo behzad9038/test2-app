@@ -3,9 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
+import { NgReduxModule, NgRedux } from '@angular-redux/store';
 
 
 import { AppComponent } from './app.component';
@@ -16,6 +14,9 @@ import { HomeComponent } from './home/home/home.component';
 import { MaterialComponent } from './material/material.component';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 import { MatComponentsModule } from './mat-components.module';
+import { IAppState, INIT_STATE } from './redux/iapp-state';
+import { rootReducer } from './redux/rootReducer';
+import { ReduxComponent } from './redux/redux.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { MatComponentsModule } from './mat-components.module';
     HttpComponent,
     HomeComponent,
     MaterialComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    ReduxComponent
   ],
-  entryComponents:[
+  entryComponents: [
     EditDialogComponent
   ],
   imports: [
@@ -36,9 +38,14 @@ import { MatComponentsModule } from './mat-components.module';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatComponentsModule
+    MatComponentsModule,
+    NgReduxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngRedux: NgRedux<IAppState>) {
+    ngRedux.configureStore(rootReducer, INIT_STATE);
+  }
+}
