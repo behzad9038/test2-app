@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatNativeDateModule } from '@angular/material';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatIconModule} from '@angular/material/icon';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatDialogModule} from '@angular/material/dialog';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatNativeDateModule,
+  MatCardModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatDatepickerModule,
+  MatIconModule,
+  MatChipsModule,
+  MatProgressSpinnerModule,
+  MatTooltipModule,
+  MatTabsModule,
+  MatDialogModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [],
@@ -32,7 +37,7 @@ import {MatDialogModule} from '@angular/material/dialog';
   //   MatTabsModule,
   //   MatDialogModule,
   // ],
-  exports:[
+  exports: [
     MatButtonModule,
     MatCheckboxModule,
     MatRadioModule,
@@ -47,6 +52,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatTooltipModule,
     MatTabsModule,
     MatDialogModule,
+    MatCardModule
   ]
 })
 export class MatComponentsModule { }

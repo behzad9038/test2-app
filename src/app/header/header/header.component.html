@@ -1,17 +1,41 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand/logo -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a [routerLink]="[ '/' ]" class="navbar-brand">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarNavDropdown" class="navbar-collapse collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="[ '/http' ]">http</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="[ '/material' ]">material</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="[ '/redux' ]">redux</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="[ '/shopping-cart' ]">Shopping Cart</a>
+            </li>
 
-    <!-- Links -->
-    <ul class="navbar-nav">
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="[ '/http' ]">http</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="[ '/material' ]">material</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="[ '/redux' ]">redux</a>
-        </li>
-    </ul>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown" *ngIf="authService.userFullName()">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{authService.userFullName()}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" [routerLink]="[ '/my-order' ]">My Order</a>
+                    <a class="dropdown-item" [routerLink]="[ 'admin/orders' ]">Manage Order</a>
+                    <a class="dropdown-item" [routerLink]="[ 'admin/products' ]">Manage Product</a>
+                    <a class="dropdown-item" (click)="logOut()" >Log Out</a>
+                </div>
+            </li>
+            <li class="nav-item" routerLinkActive="active" *ngIf="!authService.userToken()">
+                    <a class="nav-link" [routerLink]="[ '/login' ]">Login</a>
+                </li>
+        </ul>
+    </div>
 </nav>
