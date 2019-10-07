@@ -30,6 +30,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { authService } from './auth/auth.service';
+import { AdminGuard } from './auth/admin.guard';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { authService } from './auth/auth.service';
   providers: [
     authService,
     AuthGuard,
+    AdminGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

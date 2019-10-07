@@ -1,26 +1,30 @@
-<mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form class="example-form">
-        <table class="example-full-width" cellspacing="0">
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width">
-              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-          <td><mat-form-field class="example-full-width">
-            <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
-          </mat-form-field></td>
-        </tr></table>
-      </form>
-      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button (click)="login()" color="primary">Login</button>
-    </mat-card-actions>
-  </mat-card>
+<mat-card class="z-depth center">
+  <mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #f="ngForm">
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Username" [(ngModel)]="username" #userName1="ngModel" name="username"
+            (keydown.enter)="login()" required>
+          <mat-error *ngIf="userName1.invalid && userName1.touched">This feild is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Password" [(ngModel)]="password" #password1="ngModel" type="password"
+            name="password" (keydown.enter)="login()" required>
+          <mat-error *ngIf="password1.invalid && password1.touched">This feild is required</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <div class="alert alert-danger" role="alert">
+            Username or Password is incorrect! Please try again.
+          </div>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="login()" [disabled]="!f.valid || showProgressBar" color="primary">Login</button>
+  </mat-card-actions>
+</mat-card>

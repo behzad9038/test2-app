@@ -2,9 +2,11 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as myGlobals from '../share/global';
 import { stringify } from 'querystring';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class authService {
+    userChanged = new Subject;
     constructor(private http: HttpClient) { }
     userAuthentication(username: string, password: string) {
         const data = new HttpParams().set('username', username).set('password', password).set('grant_type', 'password');
@@ -13,6 +15,10 @@ export class authService {
     }
 
     getLoggedinUser() {
+        this.isAdmin().subscribe(x=>{
+            this.userChanged.next(x);
+        });
+        
         return this.http.get(myGlobals.baseURL + 'Test/GetUser');
     }
 
@@ -44,6 +50,10 @@ export class authService {
         if (localStorage.getItem('userToken') != null)
             userToken = localStorage.getItem('userToken')
         return userToken;
+    }
+
+    isAdmin() {
+        return this.http.get(myGlobals.baseURL + 'Test/IsAdmin');
     }
     GetStudentByID(ID) {
         let getUrl = 'Student/GetStudent'

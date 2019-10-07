@@ -10,24 +10,25 @@ import { AdminOrdersComponent } from '../admin/admin-orders/admin-orders.compone
 import { AdminProductsComponent } from '../admin/admin-products/admin-products.component';
 import { LoginComponent } from '../auth/login/login.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { AdminGuard } from '../auth/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
   { path: 'Home', component: HomeComponent },
   { path: 'http', component: HttpComponent },
   { path: 'material', component: MaterialComponent },
-  { path: 'redux', component: ReduxComponent,canActivate:[AuthGuard] },
+  { path: 'redux', component: ReduxComponent, canActivate: [AuthGuard] },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'my-order', component: MyOrdersComponent },
-  { path: 'admin/orders', component: AdminOrdersComponent },
-  { path: 'admin/products', component: AdminProductsComponent },
+  { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'login', component: LoginComponent },
-/*   { path: 'path', component: FeatureComponent },
-  { path: '**', component: PageNotFoundComponent }, */
+  /*   { path: 'path', component: FeatureComponent },
+    { path: '**', component: PageNotFoundComponent }, */
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

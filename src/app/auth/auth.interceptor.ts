@@ -3,11 +3,12 @@ import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpResponse, Htt
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { authService } from './auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private authService: authService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (req.headers.get('No-Auth') == "True") {
@@ -21,16 +22,19 @@ export class AuthInterceptor implements HttpInterceptor {
                 //Headers:new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem('userToken'))
             });
             return next.handle(clonedreq).pipe(tap(
-                
-                    succ => { },
-                    err => {
-                        if (err.status === 401)
-                            this.router.navigateByUrl('/signin');
+
+                succ => { },
+                err => {
+                    if (err.status === 401) {
+                        this.authService.removeUserInfoOnLocalStorage();
+                        this.router.navigateByUrl('/login');
                     }
+                }
             ));
         }
         else {
-            this.router.navigateByUrl('/signin');
+            this.authService.removeUserInfoOnLocalStorage();
+            this.router.navigateByUrl('/login');
         }
     }
 }
