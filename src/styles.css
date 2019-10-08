@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 @import "assets/MaterialIcons/material-icons.css";
-@import "https://fonts.googleapis.com/css?family=Open+Sans"
+@import "https://fonts.googleapis.com/css?family=Open+Sans";
+
+ .example-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }

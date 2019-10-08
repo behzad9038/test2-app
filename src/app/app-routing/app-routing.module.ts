@@ -11,6 +11,7 @@ import { AdminProductsComponent } from '../admin/admin-products/admin-products.c
 import { LoginComponent } from '../auth/login/login.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { AdminGuard } from '../auth/admin.guard';
+import { ProductFormComponent } from '../admin/product-form/product-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'my-order', component: MyOrdersComponent },
   { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminGuard] },
+  { path: 'admin/products/new', component: ProductFormComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'login', component: LoginComponent },
   /*   { path: 'path', component: FeatureComponent },
     { path: '**', component: PageNotFoundComponent }, */

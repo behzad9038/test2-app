@@ -31,6 +31,9 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { authService } from './auth/auth.service';
 import { AdminGuard } from './auth/admin.guard';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductService } from './product.service';
+import { CustomFormsModule } from 'ng2-validation'
 
 @NgModule({
   declarations: [
@@ -49,6 +52,7 @@ import { AdminGuard } from './auth/admin.guard';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
+    ProductFormComponent,
   ],
   entryComponents: [
     EditDialogComponent
@@ -62,13 +66,15 @@ import { AdminGuard } from './auth/admin.guard';
     BrowserAnimationsModule,
     MatComponentsModule,
     NgReduxModule,
-    NgbModule
+    NgbModule,
+    CustomFormsModule
   ],
   providers: [
     authService,
     AuthGuard,
     AdminGuard,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    ProductService,
   ],
   bootstrap: [AppComponent]
 })

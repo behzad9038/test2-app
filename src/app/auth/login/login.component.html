@@ -16,11 +16,9 @@
             name="password" (keydown.enter)="login()" required>
           <mat-error *ngIf="password1.invalid && password1.touched">This feild is required</mat-error>
         </mat-form-field>
-        <mat-form-field>
-          <div class="alert alert-danger" role="alert">
-            Username or Password is incorrect! Please try again.
-          </div>
-        </mat-form-field>
+        <div class="alert alert-danger" *ngIf="loginError" role="alert">
+          Username or Password is incorrect! Please try again.
+        </div>
       </div>
     </form>
   </mat-card-content>
