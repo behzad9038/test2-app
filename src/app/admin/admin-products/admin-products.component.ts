@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/product.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -7,12 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  Products;
+  displayedColumns: string[] = ['ProductName', 'Price', 'Edit'];
+  constructor(private router: Router, private productService: ProductService) { }
 
   ngOnInit() {
+    this.getAllProduct();
   }
-routeNewProduct(){
-  this.router.navigateByUrl('/admin/products/new');
-}
+  routeNewProduct() {
+    this.router.navigateByUrl('/admin/products/new');
+  }
+  getAllProduct() {
+    this.productService.getAllProduct().subscribe((response) => {
+      this.Products = response
+    });
+  }
 }

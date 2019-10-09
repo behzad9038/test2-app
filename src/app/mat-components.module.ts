@@ -16,7 +16,8 @@ import {
   MatTooltipModule,
   MatTabsModule,
   MatDialogModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatTableModule
 } from '@angular/material';
 @NgModule({
   declarations: [],
@@ -53,7 +54,8 @@ import {
     MatTabsModule,
     MatDialogModule,
     MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule
   ]
 })
 export class MatComponentsModule { }

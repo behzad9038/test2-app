@@ -17,4 +17,13 @@ export class ProductService {
     const params = new HttpParams().set('Category', product.category).set('ImageURL', product.imgURL).set('Price', product.price).set('ProductName', product.title);
     return this.http.post(myGlobals.baseURL + Url, params);
   }
+  getAllProduct() {
+    return this.http.get(myGlobals.baseURL + 'Product/GetAllProduct');
+  }
+  getProductByID(ID) {
+    let Url = 'Product/GetProductByID'
+    const params = new HttpParams().set('ID', ID);
+    return this.http.post(myGlobals.baseURL + Url, params);
+  }
+ 
 }

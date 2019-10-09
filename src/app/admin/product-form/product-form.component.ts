@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/product.service';
 import { NgForm } from '@angular/forms';
+import { Router, Params, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -13,11 +14,24 @@ export class ProductFormComponent implements OnInit {
   imgURL;
   category;
   categiries: any;
-  constructor(private productService: ProductService) { }
+  productID;
+  constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.getAllCategory();
-    // this.category='fruits';
+    this.activatedRoute.params.subscribe((x: Params) => {
+      this.productID = x['id'];
+      this.getProductByID(this.productID);
+    });
+  }
+  getProductByID(ID) {
+    this.productService.getProductByID(ID).subscribe((response: any) => {
+      console.log(response);
+      this.title = response.ProductName;
+      this.price = response.Price;
+      this.imgURL = response.ImageURL;
+      this.category = response.Category;
+    });
   }
   getAllCategory() {
     this.productService.getAllCategory().subscribe((response) => {
@@ -28,6 +42,7 @@ export class ProductFormComponent implements OnInit {
     console.log(form);
     this.productService.modifyProduct(form.value).subscribe((response) => {
       console.log(response);
+      this.router.navigateByUrl('/admin/products');
     },
       (err => {
         console.log(err);
