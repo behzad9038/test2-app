@@ -1,4 +1,12 @@
-<button (click)="routeNewProduct()" mat-raised-button color="primary">Add New Product</button>
+<div class="row">
+    <div class="col-md-12">
+        <button (click)="routeNewProduct()" mat-raised-button color="primary">Add New Product</button>
+    </div>
+</div>
+<h2>Material Design Table</h2>
+<mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+</mat-form-field>
 <table mat-table [dataSource]="Products" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
@@ -25,4 +33,27 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<h2>DataTable</h2>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+    <thead>
+        <tr>
+            <th>ProductName</th>
+            <th>Price</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="dtProducts?.length != 0">
+        <tr *ngFor="let product of dtProducts">
+            <td>{{ product.ProductName }}</td>
+            <td>{{ product.Price }}</td>
+            <td><a [routerLink]="[ '/admin/products/',product.ID  ]">Edit</a></td>
+        </tr>
+    </tbody>
+    <tbody *ngIf="dtProducts?.length == 0">
+        <tr>
+            <td colspan="3" class="no-data-available">No data!</td>
+        </tr>
+    <tbody>
 </table>

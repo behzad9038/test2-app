@@ -34,6 +34,7 @@ import { AdminGuard } from './auth/admin.guard';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductService } from './product.service';
 import { CustomFormsModule } from 'ng2-validation'
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { CustomFormsModule } from 'ng2-validation'
     MatComponentsModule,
     NgReduxModule,
     NgbModule,
-    CustomFormsModule
+    CustomFormsModule,
+    DataTablesModule
   ],
   providers: [
     authService,

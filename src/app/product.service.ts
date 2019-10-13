@@ -25,5 +25,11 @@ export class ProductService {
     const params = new HttpParams().set('ID', ID);
     return this.http.post(myGlobals.baseURL + Url, params);
   }
+  DeleteProduct(ID)
+  {
+    let Url = 'Product/DeleteProduct'
+    const params = new HttpParams().set('ID', ID);
+    return this.http.post(myGlobals.baseURL + Url, params);
+  }
  
 }

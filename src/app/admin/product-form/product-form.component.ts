@@ -15,12 +15,14 @@ export class ProductFormComponent implements OnInit {
   category;
   categiries: any;
   productID;
+  mode='new';
   constructor(private productService: ProductService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.getAllCategory();
     this.activatedRoute.params.subscribe((x: Params) => {
       this.productID = x['id'];
+      this.mode='edit';
       this.getProductByID(this.productID);
     });
   }
@@ -47,5 +49,15 @@ export class ProductFormComponent implements OnInit {
       (err => {
         console.log(err);
       }));
+  }
+  delete()
+  {
+    this.productService.DeleteProduct(this.productID).subscribe((response)=>{
+      console.log(response);
+      this.router.navigateByUrl('/admin/products');
+    },
+    (err => {
+      console.log(err);
+    }))
   }
 }
