@@ -12,10 +12,11 @@ import { LoginComponent } from '../auth/login/login.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { AdminGuard } from '../auth/admin.guard';
 import { ProductFormComponent } from '../admin/product-form/product-form.component';
+import { ProductComponent } from '../product/product.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
-  { path: 'Home', component: HomeComponent },
+  { path: 'Home', component: ProductComponent },
   { path: 'http', component: HttpComponent },
   { path: 'material', component: MaterialComponent },
   { path: 'redux', component: ReduxComponent, canActivate: [AuthGuard] },

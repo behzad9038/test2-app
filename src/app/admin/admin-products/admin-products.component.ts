@@ -3,13 +3,8 @@ import { Router } from '@angular/router';
 import { ProductService } from 'src/app/product.service';
 import { MatTableDataSource } from '@angular/material';
 import { Subscription, Subject } from 'rxjs';
-export interface Product {
-  ID: number;
-  ProductName: string;
-  Price: number;
-  Category: string;
-  ImageURL: string;
-}
+import { Product } from 'src/app/model/model';
+
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',

@@ -19,7 +19,6 @@ import { MatComponentsModule } from './mat-components.module';
 import { IAppState, INIT_STATE } from './redux/iapp-state';
 import { rootReducer } from './redux/rootReducer';
 import { ReduxComponent } from './redux/redux.component';
-import { ProductComponent } from './product/product.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
@@ -35,6 +34,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { ProductService } from './product.service';
 import { CustomFormsModule } from 'ng2-validation'
 import { DataTablesModule } from 'angular-datatables';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [

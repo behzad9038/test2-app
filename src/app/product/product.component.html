@@ -1,1 +1,36 @@
-<p>product works!</p>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="list-group">
+            <a routerLinkActive="active" [routerLink]="[ '/Home' ]" [routerLinkActiveOptions]="{exact: true}"
+                class="list-group-item list-group-item-action">
+                All Products
+            </a>
+            <a *ngFor="let item of Category" routerLinkActive="active" [routerLink]="[ '/Home' ]"
+                [queryParams]="{ category: item.Category}" class="list-group-item list-group-item-action">
+                {{item.CategoryDesc}}
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="row">
+            <ng-container *ngFor="let item of filteredProduct; let i=index">
+                <div class="col-sm-3">
+                    <mat-card class="example-card">
+
+                        <img mat-card-image [src]="item.ImageURL">
+                        <mat-card-header>
+                            <mat-card-title>{{item.ProductName}}</mat-card-title>
+                            <mat-card-subtitle>{{item.Price | currency}}</mat-card-subtitle>
+                        </mat-card-header>
+                        <button mat-raised-button color="primary">Add To Card</button>
+                    </mat-card>
+                </div>
+                <div *ngIf="(i+1) % 4===0" class="w-100"></div>
+            </ng-container>
+        </div>
+    </div>
+
+
+
+
+</div>
