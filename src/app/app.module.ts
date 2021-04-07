@@ -35,6 +35,8 @@ import { ProductService } from './product.service';
 import { CustomFormsModule } from 'ng2-validation'
 import { DataTablesModule } from 'angular-datatables';
 import { ProductComponent } from './product/product.component';
+import { ReportViewerComponent } from './report/report-viewer/report-viewer.component';
+import {  StimulsoftViewerModule } from 'stimulsoft-viewer-angular';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { ProductComponent } from './product/product.component';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent,
+    ReportViewerComponent,
   ],
   entryComponents: [
     EditDialogComponent
@@ -69,7 +72,8 @@ import { ProductComponent } from './product/product.component';
     NgReduxModule,
     NgbModule,
     CustomFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    StimulsoftViewerModule
   ],
   providers: [
     authService,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
+import { Subscription } from 'rxjs';
+import { Directionality, Direction } from '@angular/cdk/bidi';
 export interface Food {
   value: string;
   viewValue: string;
@@ -12,7 +14,14 @@ export interface Food {
   styleUrls: ['./material.component.css']
 })
 export class MaterialComponent implements OnInit {
-  constructor(private dialog: MatDialog) { }
+  private dir: Direction;
+  
+  constructor(private dialog: MatDialog,directionality: Directionality) { 
+    this.dir = directionality.value;
+    directionality.change.subscribe(() => {
+      this.dir = directionality.value;
+   });
+  }
   checked = false;
   userName = "ali";
   foods: Food[] = [

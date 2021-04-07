@@ -41,7 +41,7 @@
 <div class="row">
   <div class="col-md-6">
 
-    <mat-form-field>
+    <mat-form-field >
       <input (focus)="picker.open()" matInput [matDatepicker]="picker" placeholder="Choose a date" [min]="minDate"
         [max]="maxDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -62,7 +62,7 @@
     </mat-chip-list>
   </div>
   <div class="col-md-6">
-    <mat-progress-spinner mode="determinate" value="90"></mat-progress-spinner>
+    <mat-progress-spinner  mode="determinate" value="90"></mat-progress-spinner>
   </div>
 </div>
 <div class="row">
@@ -70,10 +70,10 @@
     <span matTooltip="Info about the action" matTooltipPosition="right">Tooltip</span>
   </div>
   <div class="col-md-6">
-    <mat-tab-group>
-      <mat-tab label="First"> Content 1 </mat-tab>
-      <mat-tab label="Second"> Content 2 </mat-tab>
-      <mat-tab label="Third"> Content 3 </mat-tab>
+    <mat-tab-group dir="rtl">
+      <mat-tab label="اولین تب"> <div style="text-align: right;">متن شماه 1</div> </mat-tab>
+      <mat-tab label="دومین تب"> <div style="text-align: right;">متن شماه متن شماره 2 </div></mat-tab>
+      <mat-tab label="سومین تب"><div style="text-align: right;">متن شماه  متن شماره 3</div> </mat-tab>
     </mat-tab-group>
   </div>
 </div>
@@ -86,5 +86,33 @@
     <button mat-raised-button color="accent"> Button2</button>
     <h1 class="mat-display-1">Jackdaws love my big sphinx of quartz.</h1>
     <h2 class="mat-h2">The quick brown fox jumps over the lazy dog.</h2>
+  </div>
+</div>
+
+<div class="row" dir="rtl">
+  <div class="col-md-3">
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button value="1">انتخاب</mat-radio-button>
+      <mat-radio-button value="2">انتخاب</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field>
+      <mat-select  placeholder="غدای مورد علاقه" >
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{ food.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field  class="example-full-width" >
+      <input matInput placeholder="غذاهای محلی" value="Sushi">
+    </mat-form-field>
+  </div>
+  <div class="col-md-3">
+    <mat-form-field class="example-full-width" >
+      <textarea matInput placeholder="توضیحات اضافه"></textarea>
+    </mat-form-field>
   </div>
 </div>

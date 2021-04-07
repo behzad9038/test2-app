@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {BidiModule} from '@angular/cdk/bidi'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
@@ -17,7 +18,8 @@ import {
   MatTabsModule,
   MatDialogModule,
   MatProgressBarModule,
-  MatTableModule
+  MatTableModule,
+  
 } from '@angular/material';
 @NgModule({
   declarations: [],
@@ -55,7 +57,8 @@ import {
     MatDialogModule,
     MatCardModule,
     MatProgressBarModule,
-    MatTableModule
+    MatTableModule,
+    BidiModule
   ]
 })
 export class MatComponentsModule { }

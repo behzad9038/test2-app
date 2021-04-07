@@ -13,6 +13,7 @@ import { AuthGuard } from '../auth/auth.guard';
 import { AdminGuard } from '../auth/admin.guard';
 import { ProductFormComponent } from '../admin/product-form/product-form.component';
 import { ProductComponent } from '../product/product.component';
+import { ReportViewerComponent } from '../report/report-viewer/report-viewer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/Home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'material', component: MaterialComponent },
   { path: 'redux', component: ReduxComponent, canActivate: [AuthGuard] },
   { path: 'shopping-cart', component: ShoppingCartComponent },
+  { path: 'report', component: ReportViewerComponent },
   { path: 'my-order', component: MyOrdersComponent },
   { path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuard, AdminGuard] },
